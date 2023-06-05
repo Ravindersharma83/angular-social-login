@@ -1,0 +1,13 @@
+<h1 class="text-danger">Google Sign In Demo</h1>
+<!-- <p>559841494150-b9urt3argpv6gqlkucpvm7ee69jlc8eb.apps.googleusercontent.com</p> -->
+<button class="btn btn-danger p-2 text-center m-4"><asl-google-signin-button *ngIf="!user" type='icon' size='medium'></asl-google-signin-button></button>
+
+<div *ngIf="loggedInUser">
+  <div>
+    <img src="{{loggedInUser.photoUrl}}"/>
+  </div>
+  <p>{{loggedInUser.name}}</p>
+  <p>{{loggedInUser.email}}</p>
+
+  <button (click)="signOut()" class="btn btn-danger">SignOut</button>
+</div>

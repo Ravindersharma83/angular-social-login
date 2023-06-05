@@ -1,0 +1,54 @@
+1- create a new angular project.
+2- install - @abacritt/angularx-social-login
+
+3- import the following in app.module.ts file
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from '@abacritt/angularx-social-login';
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+  ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '559841494150-b9urt3argpv6gqlkucpvm7ee69jlc8eb.apps.googleusercontent.com'
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+  ],
+
+  4- Then , in app.component.ts
+    import { SocialAuthService } from '@abacritt/angularx-social-login';
+
+    constructor(private authService:SocialAuthService){}
+    user:any;
+    loggedIn:any;
+
+    ngOnInit() {
+        this.authService.authState.subscribe((user) => {
+        this.user = user;
+        this.loggedIn = user != null;
+        console.log(this.user);
+        });
+    }
+    signOut(): void {
+        this.authService.signOut();
+    }
+
+5- Then follow the app.component.html
