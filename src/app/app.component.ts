@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,10 @@ export class AppComponent implements OnInit {
     });
     this.loggedInUser = JSON.parse(localStorage.getItem('user')!);
     console.log(this.loggedInUser.name);
+  }
+
+  signInWithFb(){
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   signOut(): void {

@@ -52,3 +52,7 @@ import {
     }
 
 5- Then follow the app.component.html
+
+// Facebook - Login
+1. get facebook provider id from (developer.facebook.com) by creating a new app in consumer section.
+2. then follow the @abacritt/angularx-social-login package steps to easily complete the facebook login implementation.
